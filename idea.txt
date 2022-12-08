@@ -1,3 +1,12 @@
+quisito 1:
+    - uma quadra tem várias reservas (relacionamento 1-N)
+        - classe "mestre": quadra
+        - classe "detalhe": reserva
+    - relacionamento de herança na classe "mestre": há vários tipos de quadra
+    - há o campo "id", que deve começar em 1 e ser automaticamente incrementado
+
+-------------------------------------------------------------------------
+
 Uma plataforma de aluguel de quadras, onde temos vários estabelecimentos 
 que fazem cadastro e mostram as quadras disponíveis.
 
