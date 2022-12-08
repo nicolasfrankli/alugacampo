@@ -1,0 +1,25 @@
+{
+  "name": "alugacampo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "mkdirp": "^1.0.4",
+    "node-json-db": "^1.6.0",
+    "ts-json-db": "^2.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicolasfrankli/alugacampo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicolasfrankli/alugacampo/issues"
+  },
+  "homepage": "https://github.com/nicolasfrankli/alugacampo#readme"
+}

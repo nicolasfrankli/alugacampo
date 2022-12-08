@@ -1,16 +1,16 @@
-import { Reservation } from "./Reservation"
+import { Reservation } from "./Reservation";
 import { SportName } from "../enums/SportName";
 
 export abstract class Court {
-    private _id : string;
+    private _id: string;
     private _sports: SportName[];
     private _area: number;
     private _status: boolean;
     private _value: number;
     private _reservations: Reservation[]
 
-    constructor(id: string, sports: SportName[], area: number, value: number) {
-        this._id = id;
+    constructor(sports: SportName[], area: number, value: number) {
+        this._id = "0";
         this._sports = sports;
         this._area = area;
         this._value = value;
@@ -20,6 +20,10 @@ export abstract class Court {
 
     public get id() {
         return this._id;
+    }
+
+    public set id(id: string) {
+        this._id = id;
     }
 
     public get sports() {
