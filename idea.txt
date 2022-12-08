@@ -1,0 +1,23 @@
+Uma plataforma de aluguel de quadras, onde temos vários estabelecimentos 
+que fazem cadastro e mostram as quadras disponíveis.
+
+Os locais recebem avaliação e aparecem em mecanismos de busca.
+
+Os usuários podem visualizar as reservas e localização de amigos.
+
+Empresa:
+Nome
+Horário de funcionamento
+
+Quadra:
+Esporte
+Tamanho
+Status
+Valor
+Horário
+
+Reserva:
+Quadra
+Lista de clientes
+
+//Aqualine

@@ -1,0 +1,4 @@
+enum SportName {
+    BasketBall,
+    FootBall
+}
