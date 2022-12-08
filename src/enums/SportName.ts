@@ -1,4 +1,4 @@
-enum SportName {
+export enum SportName {
     BasketBall,
     FootBall
 }

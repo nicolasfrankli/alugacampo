@@ -1,5 +1,8 @@
-class Reservation {
-    private _users: User[];
+import { Court } from "./Court"
+import { SportName } from "../enums/SportName";
+
+export class Reservation {
+    private _users: string[];
     private _court: Court;
     private _startTime: Date;
     private _endTime: Date;
@@ -14,7 +17,7 @@ class Reservation {
         }
     }
     
-    constructor(users: User[], court: Court, startTime: Date, endTime: Date, value: number, sport: SportName) {
+    constructor(users: string[], court: Court, startTime: Date, endTime: Date, value: number, sport: SportName) {
         this._users = users;
         this._court = court;
         this._startTime = startTime;
