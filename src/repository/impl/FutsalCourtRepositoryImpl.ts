@@ -1,9 +1,21 @@
-import { TypedJsonDB } from "ts-json-db";
-import { FutsalCourtDatabaseSchema } from "./FutsalCourtDatabaseSchema";
+import { TypedJsonDB, ContentBase } from "ts-json-db";
 import { FutsalCourt } from "../../model/courtImplementation/FutsalCourt";
-import { CourtRepository } from "../CourtRepository";
+import { FutsalCourtRepository } from "../FutsalCourtRepository";
 
-export class FutsalCourtRepository implements CourtRepository<FutsalCourt> {
+interface FutsalCourtDatabaseSchema extends ContentBase {
+    paths: {
+        '/lastId': {
+            entryType: "single",
+            valueType: string
+        },
+        '/futsalCourts': {
+            entryType: "array",
+            valueType: FutsalCourt
+        }
+    }
+}
+
+export class FutsalCourtRepositoryImpl implements FutsalCourtRepository {
 
     private db: TypedJsonDB<FutsalCourtDatabaseSchema>;
     

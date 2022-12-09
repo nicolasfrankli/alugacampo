@@ -1,6 +1,6 @@
 import { TypedJsonDB, ContentBase } from "ts-json-db";
-import { CourtRepository } from "../CourtRepository";
 import { TennisCourt } from "../../model/courtImplementation/TennisCourt";
+import { TennisCourtRepository } from "../TennisCourtRepository";
 
 interface TennisCourtDatabaseSchema extends ContentBase {
     paths: {
@@ -15,7 +15,7 @@ interface TennisCourtDatabaseSchema extends ContentBase {
     }
 }
 
-export class TennisCourtRepository implements CourtRepository<TennisCourt> {
+export class TennisCourtRepositoryImpl implements TennisCourtRepository {
 
     private db: TypedJsonDB<TennisCourtDatabaseSchema>;
     
