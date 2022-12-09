@@ -21,32 +21,11 @@ var FutsalCourt = /** @class */ (function (_super) {
     __extends(FutsalCourt, _super);
     function FutsalCourt(sports, area, value, goalPostsMaterial, hasGoalPostNet, numberOfBallsAvailable) {
         var _this = _super.call(this, sports, area, value) || this;
-        _this._goalPostsMaterial = goalPostsMaterial;
-        _this._hasGoalPostNet = hasGoalPostNet;
-        _this._numberOfBallsAvailable = numberOfBallsAvailable;
+        _this.goalPostsMaterial = goalPostsMaterial;
+        _this.hasGoalPostNet = hasGoalPostNet;
+        _this.numberOfBallsAvailable = numberOfBallsAvailable;
         return _this;
     }
-    Object.defineProperty(FutsalCourt.prototype, "goalPostsMaterial", {
-        get: function () {
-            return this._goalPostsMaterial;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(FutsalCourt.prototype, "hasGoalPostNet", {
-        get: function () {
-            return this._hasGoalPostNet;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(FutsalCourt.prototype, "numberOfBallsAvailable", {
-        get: function () {
-            return this._numberOfBallsAvailable;
-        },
-        enumerable: false,
-        configurable: true
-    });
     return FutsalCourt;
 }(Court_1.Court));
 exports.FutsalCourt = FutsalCourt;
