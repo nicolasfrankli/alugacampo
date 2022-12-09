@@ -1,4 +1,5 @@
 export enum SportName {
     BasketBall,
-    FootBall
+    FootBall,
+    Tennis
 }

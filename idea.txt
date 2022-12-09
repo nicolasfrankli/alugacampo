@@ -1,18 +1,26 @@
-quisito 1:
+requisito 1:
     - uma quadra tem várias reservas (relacionamento 1-N)
         - classe "mestre": quadra
         - classe "detalhe": reserva
     - relacionamento de herança na classe "mestre": há vários tipos de quadra
     - há o campo "id", que deve começar em 1 e ser automaticamente incrementado
 
-quesito 2:
+requisito 2:
     - uma outra classe deve ser responsável por cadastrar, consultar, alterar e excluir as classes mestre e detalhe
     - esta classe está implementada no "pacote" controller e será responsável por gerenciar as operações da aplicação
 
-quesito 3:
-quesito 4:
-quesito 5:
-quesito 6:
+requisito 3:
+    - propor uma implementação de persistência como arquivos, lista encadeada, WEB API ou mesmo banco de dados local.
+    - usamos um wrapper de manipulação de arquivos JSON para persistir os dados em memória
+
+requisito 4:
+
+requisito 5:
+    - introduzir na aplicação alguma abstração através de interfaces e suas consequentes implementações.
+    - a aplicação usa interfaces ao lidar com as classes do pacote "repository"
+    - isso permite que não haja comprometimento na funcionalidade caso a implementação do banco de dados seja alterada
+
+requisito 6:
 -------------------------------------------------------------------------
 
 Uma plataforma de aluguel de quadras, onde temos vários estabelecimentos 
