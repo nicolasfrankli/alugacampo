@@ -6,6 +6,3 @@ export interface TennisCourtRepository extends CourtRepository<TennisCourt> {
     // metodos aqui
 
 }
-
-
-

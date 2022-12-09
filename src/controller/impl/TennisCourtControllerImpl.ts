@@ -1,8 +1,8 @@
 import { TennisCourt } from "../../model/courtImplementation/TennisCourt";
-import { TennisCourtRepository } from "../../repository/impl/TennisCourtRepository";
-import { BaseController } from "../BaseController";
+import { TennisCourtRepository } from "../../repository/TennisCourtRepository";
+import { TennisCourtController } from "../TennisCourtController";
 
-export class TennisCourtController implements BaseController<TennisCourt> {
+export class TennisCourtControllerImpl implements TennisCourtController {
 
     private courtRepository: TennisCourtRepository;
 

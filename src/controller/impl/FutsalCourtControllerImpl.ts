@@ -1,8 +1,8 @@
 import { FutsalCourt } from "../../model/courtImplementation/FutsalCourt";
 import { FutsalCourtRepository } from "../../repository/FutsalCourtRepository";
-import { BaseController } from "../BaseController";
+import { FutsalCourtController } from "../FutsalCourtController";
 
-export class FutsalCourtController implements BaseController<FutsalCourt> {
+export class FutsalCourtControllerImpl implements FutsalCourtController {
 
     private courtRepository: FutsalCourtRepository;
 
