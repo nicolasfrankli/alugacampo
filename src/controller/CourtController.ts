@@ -1,21 +1,30 @@
 import { FutsalCourt } from "../model/courtImplementation/FutsalCourt";
-import { FutsalCourtRepository } from "../repository/FutsalCourtRepository";
+import { CourtRepository } from "../repository/CourtRepository";
+import { FutsalCourtRepository } from "../repository/impl/FutsalCourtRepository";
 
 export class FutsalCourtController {
 
-    private _courtRepository: FutsalCourtRepository;
+    private courtRepository: CourtRepository<FutsalCourt>;
 
-    constructor() {
-        this._courtRepository = new FutsalCourtRepository;
+    constructor(repository: CourtRepository<FutsalCourt>) {
+        this.courtRepository = repository;
     }
 
     public addNewCourt(futsalCourt: FutsalCourt): void {
-        this._courtRepository.save(futsalCourt);
+        this.courtRepository.save(futsalCourt);
     }
 
-    public findAllCourts(): void {
-        this._courtRepository.findAll();
+    public findAllCourts(): FutsalCourt[] {
+        return this.courtRepository.findAll();
     }
+
+    public findById(id: string): FutsalCourt {
+        return this.courtRepository.findById(id);
+    }
+
     //update
-    //delete
+
+    public deleteById(id: string): void {
+        this.courtRepository.deleteById(id);
+    }
 }
