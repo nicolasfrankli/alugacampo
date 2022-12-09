@@ -10,6 +10,10 @@ quesito 2:
     - esta classe está implementada no "pacote" controller e será responsável por gerenciar as operações da aplicação
 
 quesito 3:
+    - propor uma implementação de persistência como arquivos, lista encadeada, WEB API ou mesmo banco de dados local.
+    - usamos um wrapper de manipulação de arquivos JSON para persistir os dados em memória
+
+quesito 3:
 quesito 4:
 quesito 5:
 quesito 6:
