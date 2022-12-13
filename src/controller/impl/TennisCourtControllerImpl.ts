@@ -27,5 +27,9 @@ export class TennisCourtControllerImpl implements TennisCourtController {
     public deleteById(id: string): void {
         this.courtRepository.deleteById(id);
     }
+
+    public showCoveredCourts(): TennisCourt[] {
+        return this.courtRepository.showCoveredCourts();
+    }
 }
 

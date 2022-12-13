@@ -27,4 +27,9 @@ export class FutsalCourtControllerImpl implements FutsalCourtController {
     public deleteById(id: string): void {
         this.courtRepository.deleteById(id);
     }
+
+    public findByHasNetInGoalPost(): FutsalCourt[] {
+        return this.courtRepository.findByHasNetInGoalPost();
+    }
+
 }

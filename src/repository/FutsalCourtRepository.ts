@@ -3,7 +3,7 @@ import { CourtRepository } from "./CourtRepository";
 
 export interface FutsalCourtRepository extends CourtRepository<FutsalCourt> {
 
-    // findByHasNetInGoalPost(): FutsalCourt[];
+    findByHasNetInGoalPost(): FutsalCourt[];
 
 }
 

@@ -18,6 +18,9 @@ var TennisCourtControllerImpl = /** @class */ (function () {
     TennisCourtControllerImpl.prototype.deleteById = function (id) {
         this.courtRepository.deleteById(id);
     };
+    TennisCourtControllerImpl.prototype.showCoveredCourts = function () {
+        return this.courtRepository.showCoveredCourts();
+    };
     return TennisCourtControllerImpl;
 }());
 exports.TennisCourtControllerImpl = TennisCourtControllerImpl;

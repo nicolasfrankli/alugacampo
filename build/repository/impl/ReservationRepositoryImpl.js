@@ -50,6 +50,20 @@ var ReservationRepositoryImpl = /** @class */ (function () {
         }
         throw new Error();
     };
+    ReservationRepositoryImpl.prototype.findByUser = function (userName) {
+        var results = this.findAll();
+        var queryResults = new Array;
+        for (var _i = 0, results_2 = results; _i < results_2.length; _i++) {
+            var result = results_2[_i];
+            for (var _a = 0, _b = result.users; _a < _b.length; _a++) {
+                var name_1 = _b[_a];
+                if (name_1 == userName) {
+                    queryResults.push(result.court);
+                }
+            }
+        }
+        return queryResults;
+    };
     return ReservationRepositoryImpl;
 }());
 exports.ReservationRepositoryImpl = ReservationRepositoryImpl;
