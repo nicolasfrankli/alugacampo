@@ -2,22 +2,22 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Reservation = void 0;
 var Reservation = /** @class */ (function () {
+    // private validateChosenSport(court: Court, sport: SportName) : boolean {
+    //     return sport in court.sports
+    //         return true;
+    //     } else {
+    //         throw Error();
+    //     }
+    // }
     function Reservation(users, court, startTime, endTime, value, sport) {
-        this._users = users;
-        this._court = court;
-        this._startTime = startTime;
-        this._endTime = endTime;
-        this._value = value;
-        this._sport = this.validateChosenSport(court, sport);
+        this.id = "0";
+        this.users = users;
+        this.court = court;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.value = value;
+        this.sport = sport;
     }
-    Reservation.prototype.validateChosenSport = function (court, sport) {
-        if (sport in court.sports) {
-            return sport;
-        }
-        else {
-            throw Error();
-        }
-    };
     return Reservation;
 }());
 exports.Reservation = Reservation;
