@@ -1,0 +1,1 @@
+{"lastId":"1","reservations":[{"id":"1","users":["icaro","nicolas"],"court":{"id":"14","sports":[1],"area":30,"value":25,"status":false,"reservations":[],"goalPostsMaterial":"cloth","hasGoalPostNet":true,"numberOfBallsAvailable":5},"startTime":"2022-12-13T00:14:09.149Z","endTime":"2022-12-31T00:00:00.000Z","value":25,"sport":1}]}

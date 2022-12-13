@@ -17,10 +17,21 @@ requisito 4:
 
 requisito 5:
     - introduzir na aplicação alguma abstração através de interfaces e suas consequentes implementações.
-    - a aplicação usa interfaces ao lidar com as classes do pacote "repository"
-    - isso permite que não haja comprometimento na funcionalidade caso a implementação do banco de dados seja alterada
+    - a aplicação usa interfaces ao lidar com as classes dos "pacotes" repository e controller
+    - isso permite que não haja comprometimento nas funcionalidades de diferentes camadas da aplicação caso a implementação delas seja alterada
 
 requisito 6:
+
+-------------------------------------------------------------------------
+
+TODO:
+    - repositório de reservas
+    - relacionamento 1 pra muitos no banco de dados
+    - métodos das interfaces de repositório das quadras
+    - métodos das interfaces de controller
+    - estrutura de interfaces e implementações para reserva
+    - view e validações
+
 -------------------------------------------------------------------------
 
 Uma plataforma de aluguel de quadras, onde temos vários estabelecimentos 
