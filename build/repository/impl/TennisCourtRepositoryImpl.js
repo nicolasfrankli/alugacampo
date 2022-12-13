@@ -48,6 +48,18 @@ var TennisCourtRepositoryImpl = /** @class */ (function () {
         }
         throw new Error();
     };
+    TennisCourtRepositoryImpl.prototype.showCoveredCourts = function () {
+        var results = this.findAll();
+        var queryResults = new Array;
+        for (var _i = 0, results_2 = results; _i < results_2.length; _i++) {
+            var result = results_2[_i];
+            if (result.hasOpenCeiling == false) {
+                queryResults.push(result);
+            }
+        }
+        return queryResults;
+    };
+    ;
     return TennisCourtRepositoryImpl;
 }());
 exports.TennisCourtRepositoryImpl = TennisCourtRepositoryImpl;

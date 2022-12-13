@@ -8,4 +8,6 @@ export interface BaseRepository<T> {
 
     deleteById(id: string): void;
 
+    // update(parameters: T): T;
+
 }

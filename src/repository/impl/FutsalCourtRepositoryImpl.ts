@@ -1,4 +1,6 @@
 import { TypedJsonDB, ContentBase } from "ts-json-db";
+import { EmptyFutsalCourtError } from "../../exception/EmptyFutsalCourtError";
+import { IdNotFoundError } from "../../exception/IdNotFoundError";
 import { FutsalCourt } from "../../model/courtImplementation/FutsalCourt";
 import { FutsalCourtRepository } from "../FutsalCourtRepository";
 
@@ -38,7 +40,7 @@ export class FutsalCourtRepositoryImpl implements FutsalCourtRepository {
     public findAll(): FutsalCourt[] {
         let result = this.db.get("/futsalCourts");
         if(result == null) {
-            throw new Error();
+            throw new EmptyFutsalCourtError("Não temos quadras de futsal.");
         }
         return result;
     }
@@ -52,7 +54,7 @@ export class FutsalCourtRepositoryImpl implements FutsalCourtRepository {
             }
         }
 
-        throw new Error();
+        throw new IdNotFoundError("ID não encontrado.");
     }
 
     public deleteById(id: string): void {
@@ -71,7 +73,19 @@ export class FutsalCourtRepositoryImpl implements FutsalCourtRepository {
             return;
         }
 
-        throw new Error();
+        throw new IdNotFoundError("ID não encontrado.");
     }
+
+    public findByHasNetInGoalPost(): FutsalCourt[]{
+        let results = this.findAll();
+        let queryResults = new Array<FutsalCourt>;
+
+        for(let result of results) {
+            if(result.hasGoalPostNet == true) {
+                queryResults.push(result);
+            }
+        }
+        return queryResults;
+    };
 }
 

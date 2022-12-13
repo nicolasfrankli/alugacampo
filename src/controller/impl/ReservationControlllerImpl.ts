@@ -1,3 +1,4 @@
+import { Court } from "../../model/Court";
 import { Reservation } from "../../model/Reservation";
 import { ReservationRepository } from "../../repository/ReservationRepository";
 import { BaseController } from "../BaseController";
@@ -28,4 +29,7 @@ export class ReservationControllerImpl implements BaseController<Reservation> {
         this.repository.deleteById(id);
     }
 
+    public findByUser(userName: string): Array<Court> {
+        return this.repository.findByUser(userName);
+    }
 }

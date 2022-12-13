@@ -38,7 +38,7 @@ export class TennisCourtRepositoryImpl implements TennisCourtRepository {
     public findAll(): TennisCourt[] {
         let result = this.db.get("/tennisCourts");
         if(result == null) {
-            throw new Error();
+            throw new EmptyTennisCourtError("Não temos quadras de tênis.");
         }
         return result;
     }
@@ -52,7 +52,7 @@ export class TennisCourtRepositoryImpl implements TennisCourtRepository {
             }
         }
 
-        throw new Error();
+        throw new IdNotFoundError("ID não encontrado.");
     }
 
     public deleteById(id: string): void {
@@ -71,8 +71,18 @@ export class TennisCourtRepositoryImpl implements TennisCourtRepository {
             return;
         }
 
-        throw new Error();
+        throw new IdNotFoundError("ID não encontrado.");
     }
+
+    public showCoveredCourts(): TennisCourt[]{
+        let results = this.findAll();
+        let queryResults = new Array<TennisCourt>;
+
+        for(let result of results) {
+            if(result.hasOpenCeiling == false) {
+                queryResults.push(result);
+            }
+        }
+        return queryResults;
+    };
 }
-
-

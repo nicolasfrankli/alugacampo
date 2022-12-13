@@ -18,6 +18,9 @@ var FutsalCourtControllerImpl = /** @class */ (function () {
     FutsalCourtControllerImpl.prototype.deleteById = function (id) {
         this.courtRepository.deleteById(id);
     };
+    FutsalCourtControllerImpl.prototype.findByHasNetInGoalPost = function () {
+        return this.courtRepository.findByHasNetInGoalPost();
+    };
     return FutsalCourtControllerImpl;
 }());
 exports.FutsalCourtControllerImpl = FutsalCourtControllerImpl;

@@ -18,6 +18,9 @@ var ReservationControllerImpl = /** @class */ (function () {
     ReservationControllerImpl.prototype.deleteById = function (id) {
         this.repository.deleteById(id);
     };
+    ReservationControllerImpl.prototype.findByUser = function (userName) {
+        return this.repository.findByUser(userName);
+    };
     return ReservationControllerImpl;
 }());
 exports.ReservationControllerImpl = ReservationControllerImpl;

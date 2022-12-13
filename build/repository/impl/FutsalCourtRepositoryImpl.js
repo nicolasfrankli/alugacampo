@@ -48,6 +48,18 @@ var FutsalCourtRepositoryImpl = /** @class */ (function () {
         }
         throw new Error();
     };
+    FutsalCourtRepositoryImpl.prototype.findByHasNetInGoalPost = function () {
+        var results = this.findAll();
+        var queryResults = new Array;
+        for (var _i = 0, results_2 = results; _i < results_2.length; _i++) {
+            var result = results_2[_i];
+            if (result.hasGoalPostNet == true) {
+                queryResults.push(result);
+            }
+        }
+        return queryResults;
+    };
+    ;
     return FutsalCourtRepositoryImpl;
 }());
 exports.FutsalCourtRepositoryImpl = FutsalCourtRepositoryImpl;

@@ -1,6 +1,8 @@
 import { ContentBase, TypedJsonDB } from "ts-json-db/dist/src";
 import { EmptyReservationListError } from "../../exception/EmptyReservationListError";
+import { IdNotFoundError } from "../../exception/IdNotFoundError";
 import { ReservationNotFoundError } from "../../exception/ReservationNotFoundError";
+import { Court } from "../../model/Court";
 import { Reservation } from "../../model/Reservation";
 import { ReservationRepository } from "../ReservationRepository";
 
@@ -73,7 +75,21 @@ export class ReservationRepositoryImpl implements ReservationRepository {
             return;
         }
 
-        throw new Error();
+        throw new IdNotFoundError("Não existe ID especificado.");
+    }
+
+    public findByUser(userName: string): Array<Court>{
+        let results = this.findAll();
+        let queryResults = new Array<Court>;
+
+        for(let result of results) {
+            for (let name of result.users) {
+                if(name == userName) {
+                    queryResults.push(result.court);
+                }
+            }
+        }
+        return queryResults;
     }
 
 }
