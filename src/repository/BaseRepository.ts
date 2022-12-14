@@ -6,8 +6,8 @@ export interface BaseRepository<T> {
 
     findById(id: string): T;
 
-    deleteById(id: string): void;
+    updateById(id: string, parameters: Map<string, Object>): T;
 
-    // update(parameters: T): T;
+    deleteById(id: string): void;
 
 }

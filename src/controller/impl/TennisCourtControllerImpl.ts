@@ -22,7 +22,9 @@ export class TennisCourtControllerImpl implements TennisCourtController {
         return this.courtRepository.findById(id);
     }
 
-    //update
+    public updateById(id: string, parameters: Map<string, Object>): TennisCourt {
+        return this.courtRepository.updateById(id, parameters);
+    }
 
     public deleteById(id: string): void {
         this.courtRepository.deleteById(id);

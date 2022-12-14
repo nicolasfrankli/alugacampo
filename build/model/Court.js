@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Court = void 0;
-var Court = /** @class */ (function () {
-    function Court(sports, area, value) {
+class Court {
+    constructor(sports, area, value) {
         this.id = "0";
         this.sports = sports;
         this.area = area;
@@ -10,6 +10,5 @@ var Court = /** @class */ (function () {
         this.status = false;
         this.reservations = new Array;
     }
-    return Court;
-}());
+}
 exports.Court = Court;
