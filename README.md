@@ -1,6 +1,10 @@
 Uma plataforma de aluguel de quadras, onde temos vários estabelecimentos 
 que fazem cadastro e mostram as quadras disponíveis.
 
+### Uso
+ `$ tsc && node build/Application.js`
+
+### Descrição
 requisito 1:
     - uma quadra tem várias reservas (relacionamento 1-N)
         - classe "mestre": quadra
