@@ -4,7 +4,7 @@ import { SportName } from "../enums/SportName";
 export class Reservation {
     public id: string;
     public users: string[];
-    public court: Court;
+    public courtId: string;
     public startTime: Date;
     public endTime: Date;
     public value: number;
@@ -18,10 +18,10 @@ export class Reservation {
     //     }
     // }
     
-    constructor(users: string[], court: Court, startTime: Date, endTime: Date, value: number, sport: SportName) {
+    constructor(users: string[], courtId: string, startTime: Date, endTime: Date, value: number, sport: SportName) {
         this.id = "0";
         this.users = users;
-        this.court = court;
+        this.courtId = courtId;
         this.startTime = startTime;
         this.endTime = endTime;
         this.value = value;
