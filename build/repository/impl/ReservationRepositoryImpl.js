@@ -58,15 +58,21 @@ class ReservationRepositoryImpl {
     }
     deleteById(id) {
         let results = this.findAll();
+        if (results.length == 0) {
+            return;
+        }
         let i = 0;
         for (; i < results.length; i++) {
             if (results[i].id == id) {
                 break;
             }
         }
+        console.log("alo");
         if (i < results.length) {
             results.splice(i, 1);
+            console.log("alo1");
             this.db.set("/reservations", results);
+            console.log("alo");
             return;
         }
         throw new DataBaseError_1.DatabaseError("Não existe ID especificado.");

@@ -1,4 +1,5 @@
 import { TennisCourt } from "../../model/courtImplementation/TennisCourt";
+import { Reservation } from "../../model/Reservation";
 import { TennisCourtRepository } from "../../repository/TennisCourtRepository";
 import { TennisCourtController } from "../TennisCourtController";
 
@@ -32,6 +33,10 @@ export class TennisCourtControllerImpl implements TennisCourtController {
 
     public showCoveredCourts(): TennisCourt[] {
         return this.courtRepository.showCoveredCourts();
+    }
+
+    public createReservationById(id: string, reservation: Reservation): TennisCourt {
+        return this.courtRepository.createReservationById(id, reservation);
     }
 }
 

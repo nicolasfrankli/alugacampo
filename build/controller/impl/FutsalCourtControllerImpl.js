@@ -23,5 +23,8 @@ class FutsalCourtControllerImpl {
     findByHasNetInGoalPost() {
         return this.courtRepository.findByHasNetInGoalPost();
     }
+    createReservationById(id, reservation) {
+        return this.courtRepository.createReservationById(id, reservation);
+    }
 }
 exports.FutsalCourtControllerImpl = FutsalCourtControllerImpl;

@@ -1,4 +1,5 @@
 import { FutsalCourt } from "../../model/courtImplementation/FutsalCourt";
+import { Reservation } from "../../model/Reservation";
 import { FutsalCourtRepository } from "../../repository/FutsalCourtRepository";
 import { FutsalCourtController } from "../FutsalCourtController";
 
@@ -32,6 +33,10 @@ export class FutsalCourtControllerImpl implements FutsalCourtController {
 
     public findByHasNetInGoalPost(): FutsalCourt[] {
         return this.courtRepository.findByHasNetInGoalPost();
+    }
+
+    public createReservationById(id: string, reservation: Reservation): FutsalCourt {
+        return this.courtRepository.createReservationById(id, reservation);
     }
 
 }

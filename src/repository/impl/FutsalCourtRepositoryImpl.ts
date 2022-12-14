@@ -23,13 +23,14 @@ interface FutsalCourtDatabaseSchema extends ContentBase {
 export class FutsalCourtRepositoryImpl implements FutsalCourtRepository {
 
     private db: TypedJsonDB<FutsalCourtDatabaseSchema>;
-    private reservationdb: ReservationRepository = new ReservationRepositoryImpl();
+    private reservationdb: ReservationRepository;
     
     constructor() {
         this.db = new TypedJsonDB<FutsalCourtDatabaseSchema>("./database/futsalCourtDatabase.json");
         if(!this.db.exists("/lastId")) {
             this.db.set("/lastId", "0");
         }
+        this.reservationdb = new ReservationRepositoryImpl();
     }
 
     public save(futsalCourt: FutsalCourt): void {
@@ -106,8 +107,10 @@ export class FutsalCourtRepositoryImpl implements FutsalCourtRepository {
         }
 
         if(i < results.length) {
-            for(let reservation of results[i].reservations) {
-                this.reservationdb.deleteById(reservation.id)
+            if(results[i].reservations.length > 0) {
+                for(let reservation of results[i].reservations) {
+                    this.reservationdb.deleteById(reservation.id)
+                }
             }
             results.splice(i, 1)
             this.db.set("/futsalCourts", results);
