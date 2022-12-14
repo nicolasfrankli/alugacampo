@@ -8,7 +8,7 @@ class Court {
         this.area = area;
         this.value = value;
         this.status = false;
-        this.reservations = new Array;
+        this.reservations = [];
     }
 }
 exports.Court = Court;

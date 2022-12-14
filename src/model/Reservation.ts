@@ -1,4 +1,3 @@
-import { Court } from "./Court"
 import { SportName } from "../enums/SportName";
 
 export class Reservation {
@@ -10,18 +9,10 @@ export class Reservation {
     public value: number;
     public sport: SportName;
     
-    // private validateChosenSport(court: Court, sport: SportName) : boolean {
-    //     return sport in court.sports
-    //         return true;
-    //     } else {
-    //         throw Error();
-    //     }
-    // }
-    
-    constructor(users: string[], court: Court, startTime: Date, endTime: Date, value: number, sport: SportName) {
+    constructor(users: string[], courtId: string, startTime: Date, endTime: Date, value: number, sport: SportName) {
         this.id = "0";
         this.users = users;
-        this.courtId = court.id;
+        this.courtId = courtId;
         this.startTime = startTime;
         this.endTime = endTime;
         this.value = value;

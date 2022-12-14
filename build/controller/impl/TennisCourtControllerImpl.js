@@ -23,5 +23,8 @@ class TennisCourtControllerImpl {
     showCoveredCourts() {
         return this.courtRepository.showCoveredCourts();
     }
+    createReservationById(id, reservation) {
+        return this.courtRepository.createReservationById(id, reservation);
+    }
 }
 exports.TennisCourtControllerImpl = TennisCourtControllerImpl;

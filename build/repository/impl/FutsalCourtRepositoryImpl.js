@@ -6,11 +6,11 @@ const DataBaseError_1 = require("../../exception/DataBaseError");
 const ReservationRepositoryImpl_1 = require("./ReservationRepositoryImpl");
 class FutsalCourtRepositoryImpl {
     constructor() {
-        this.reservationdb = new ReservationRepositoryImpl_1.ReservationRepositoryImpl();
         this.db = new ts_json_db_1.TypedJsonDB("./database/futsalCourtDatabase.json");
         if (!this.db.exists("/lastId")) {
             this.db.set("/lastId", "0");
         }
+        this.reservationdb = new ReservationRepositoryImpl_1.ReservationRepositoryImpl();
     }
     save(futsalCourt) {
         let lastId = this.db.get("/lastId");
@@ -73,8 +73,10 @@ class FutsalCourtRepositoryImpl {
             }
         }
         if (i < results.length) {
-            for (let reservation of results[i].reservations) {
-                this.reservationdb.deleteById(reservation.id);
+            if (results[i].reservations.length > 0) {
+                for (let reservation of results[i].reservations) {
+                    this.reservationdb.deleteById(reservation.id);
+                }
             }
             results.splice(i, 1);
             this.db.set("/futsalCourts", results);
