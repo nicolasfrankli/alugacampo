@@ -1,8 +1,6 @@
 import { ContentBase, TypedJsonDB } from "ts-json-db/dist/src";
-import { EmptyReservationListError } from "../../exception/EmptyReservationListError";
-import { IdNotFoundError } from "../../exception/IdNotFoundError";
-import { ReservationNotFoundError } from "../../exception/ReservationNotFoundError";
-import { Court } from "../../model/Court";
+import { SportName } from "../../enums/SportName";
+import { DatabaseError } from "../../exception/DataBaseError";
 import { Reservation } from "../../model/Reservation";
 import { ReservationRepository } from "../ReservationRepository";
 
@@ -34,15 +32,18 @@ export class ReservationRepositoryImpl implements ReservationRepository {
         let lastId: string | null = this.db.get("/lastId");
         let newId: string = "" + (Number(lastId) + 1);
 
-        reservation.id = newId;
-        this.db.push("/reservations", reservation);
+        if(reservation.id == "0") {
+            reservation.id = newId;
+            this.db.push("/reservations", reservation);
+        }
+
         this.db.set("/lastId", newId)
     }
 
     public findAll(): Reservation[] {
         let result = this.db.get("/reservations");
         if(result == null) {
-            throw new EmptyReservationListError("Não há reservas cadastradas");
+            throw new DatabaseError("Não há reservas cadastradas");
         }
         return result;
     }
@@ -56,36 +57,61 @@ export class ReservationRepositoryImpl implements ReservationRepository {
             }
         }
 
-        throw new ReservationNotFoundError("Não há reservas para o ID especificado");
+        throw new DatabaseError("Não há reservas para o ID especificado");
+    }
+
+    public updateById(id: string, parameters: Map<String, Object>): Reservation {
+        let reservation: Reservation = this.findById(id);
+
+        if(parameters.has("users")) {
+            reservation.users = parameters.get("users") as string[];
+        }
+        if(parameters.has("startTime")) {
+            reservation.startTime = parameters.get("startTime") as Date;
+        }
+        if(parameters.has("endTime")) {
+            reservation.endTime = parameters.get("endTime") as Date;
+        }
+        if(parameters.has("value")) {
+            reservation.value = parameters.get("value") as number;
+        }
+        if(parameters.has("sport")) {
+            reservation.sport = parameters.get("sport") as SportName;
+        }
+
+        this.deleteById(reservation.id);
+        this.save(reservation);
+
+        return reservation;
     }
 
     public deleteById(id: string): void {
         let results = this.findAll();
-        let i: number  = -1
+        let i: number = 0;
 
-        for(i = 0; i < results.length; i++) {
+        for(; i < results.length; i++) {
             if(results[i].id == id) {
                 break;
             }
         }
 
-        if(i != -1) {
+        if(i < results.length) {
             results.splice(i, 1)
             this.db.set("/reservations", results);
             return;
         }
 
-        throw new IdNotFoundError("Não existe ID especificado.");
+        throw new DatabaseError("Não existe ID especificado.");
     }
 
-    public findByUser(userName: string): Array<Court>{
+    public findByUser(userName: string): Reservation[] {
         let results = this.findAll();
-        let queryResults = new Array<Court>;
+        let queryResults: Reservation[] = [];
 
         for(let result of results) {
             for (let name of result.users) {
                 if(name == userName) {
-                    queryResults.push(result.court);
+                    queryResults.push(result);
                 }
             }
         }

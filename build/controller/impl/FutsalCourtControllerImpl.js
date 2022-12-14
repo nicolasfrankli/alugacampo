@@ -1,26 +1,27 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FutsalCourtControllerImpl = void 0;
-var FutsalCourtControllerImpl = /** @class */ (function () {
-    function FutsalCourtControllerImpl(repository) {
+class FutsalCourtControllerImpl {
+    constructor(repository) {
         this.courtRepository = repository;
     }
-    FutsalCourtControllerImpl.prototype.save = function (futsalCourt) {
+    save(futsalCourt) {
         this.courtRepository.save(futsalCourt);
-    };
-    FutsalCourtControllerImpl.prototype.findAll = function () {
+    }
+    findAll() {
         return this.courtRepository.findAll();
-    };
-    FutsalCourtControllerImpl.prototype.findById = function (id) {
+    }
+    findById(id) {
         return this.courtRepository.findById(id);
-    };
-    //update
-    FutsalCourtControllerImpl.prototype.deleteById = function (id) {
+    }
+    updateById(id, parameters) {
+        return this.courtRepository.updateById(id, parameters);
+    }
+    deleteById(id) {
         this.courtRepository.deleteById(id);
-    };
-    FutsalCourtControllerImpl.prototype.findByHasNetInGoalPost = function () {
+    }
+    findByHasNetInGoalPost() {
         return this.courtRepository.findByHasNetInGoalPost();
-    };
-    return FutsalCourtControllerImpl;
-}());
+    }
+}
 exports.FutsalCourtControllerImpl = FutsalCourtControllerImpl;

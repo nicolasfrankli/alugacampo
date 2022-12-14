@@ -1,69 +1,87 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReservationRepositoryImpl = void 0;
-var src_1 = require("ts-json-db/dist/src");
-var EmptyReservationListError_1 = require("../../exception/EmptyReservationListError");
-var ReservationNotFoundError_1 = require("../../exception/ReservationNotFoundError");
-var ReservationRepositoryImpl = /** @class */ (function () {
-    function ReservationRepositoryImpl() {
+const src_1 = require("ts-json-db/dist/src");
+const DataBaseError_1 = require("../../exception/DataBaseError");
+class ReservationRepositoryImpl {
+    constructor() {
         this.db = new src_1.TypedJsonDB("./database/reservationDatabase.json");
         if (!this.db.exists("/lastId")) {
             this.db.set("/lastId", "0");
         }
     }
-    ReservationRepositoryImpl.prototype.save = function (reservation) {
-        var lastId = this.db.get("/lastId");
-        var newId = "" + (Number(lastId) + 1);
-        reservation.id = newId;
-        this.db.push("/reservations", reservation);
+    save(reservation) {
+        let lastId = this.db.get("/lastId");
+        let newId = "" + (Number(lastId) + 1);
+        if (reservation.id == "0") {
+            reservation.id = newId;
+            this.db.push("/reservations", reservation);
+        }
         this.db.set("/lastId", newId);
-    };
-    ReservationRepositoryImpl.prototype.findAll = function () {
-        var result = this.db.get("/reservations");
+    }
+    findAll() {
+        let result = this.db.get("/reservations");
         if (result == null) {
-            throw new EmptyReservationListError_1.EmptyReservationListError("Não há reservas cadastradas");
+            throw new DataBaseError_1.DatabaseError("Não há reservas cadastradas");
         }
         return result;
-    };
-    ReservationRepositoryImpl.prototype.findById = function (id) {
-        var results = this.findAll();
-        for (var _i = 0, results_1 = results; _i < results_1.length; _i++) {
-            var result = results_1[_i];
+    }
+    findById(id) {
+        let results = this.findAll();
+        for (let result of results) {
             if (result.id == id) {
                 return result;
             }
         }
-        throw new ReservationNotFoundError_1.ReservationNotFoundError("Não há reservas para o ID especificado");
-    };
-    ReservationRepositoryImpl.prototype.deleteById = function (id) {
-        var results = this.findAll();
-        var i = -1;
-        for (i = 0; i < results.length; i++) {
+        throw new DataBaseError_1.DatabaseError("Não há reservas para o ID especificado");
+    }
+    updateById(id, parameters) {
+        let reservation = this.findById(id);
+        if (parameters.has("users")) {
+            reservation.users = parameters.get("users");
+        }
+        if (parameters.has("startTime")) {
+            reservation.startTime = parameters.get("startTime");
+        }
+        if (parameters.has("endTime")) {
+            reservation.endTime = parameters.get("endTime");
+        }
+        if (parameters.has("value")) {
+            reservation.value = parameters.get("value");
+        }
+        if (parameters.has("sport")) {
+            reservation.sport = parameters.get("sport");
+        }
+        this.deleteById(reservation.id);
+        this.save(reservation);
+        return reservation;
+    }
+    deleteById(id) {
+        let results = this.findAll();
+        let i = 0;
+        for (; i < results.length; i++) {
             if (results[i].id == id) {
                 break;
             }
         }
-        if (i != -1) {
+        if (i < results.length) {
             results.splice(i, 1);
             this.db.set("/reservations", results);
             return;
         }
-        throw new Error();
-    };
-    ReservationRepositoryImpl.prototype.findByUser = function (userName) {
-        var results = this.findAll();
-        var queryResults = new Array;
-        for (var _i = 0, results_2 = results; _i < results_2.length; _i++) {
-            var result = results_2[_i];
-            for (var _a = 0, _b = result.users; _a < _b.length; _a++) {
-                var name_1 = _b[_a];
-                if (name_1 == userName) {
-                    queryResults.push(result.court);
+        throw new DataBaseError_1.DatabaseError("Não existe ID especificado.");
+    }
+    findByUser(userName) {
+        let results = this.findAll();
+        let queryResults = [];
+        for (let result of results) {
+            for (let name of result.users) {
+                if (name == userName) {
+                    queryResults.push(result);
                 }
             }
         }
         return queryResults;
-    };
-    return ReservationRepositoryImpl;
-}());
+    }
+}
 exports.ReservationRepositoryImpl = ReservationRepositoryImpl;

@@ -1,26 +1,27 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReservationControllerImpl = void 0;
-var ReservationControllerImpl = /** @class */ (function () {
-    function ReservationControllerImpl(repository) {
+class ReservationControllerImpl {
+    constructor(repository) {
         this.repository = repository;
     }
-    ReservationControllerImpl.prototype.save = function (futsalCourt) {
-        this.repository.save(futsalCourt);
-    };
-    ReservationControllerImpl.prototype.findAll = function () {
+    save(reservation) {
+        this.repository.save(reservation);
+    }
+    findAll() {
         return this.repository.findAll();
-    };
-    ReservationControllerImpl.prototype.findById = function (id) {
+    }
+    findById(id) {
         return this.repository.findById(id);
-    };
-    //update
-    ReservationControllerImpl.prototype.deleteById = function (id) {
+    }
+    updateById(id, parameters) {
+        return this.repository.updateById(id, parameters);
+    }
+    deleteById(id) {
         this.repository.deleteById(id);
-    };
-    ReservationControllerImpl.prototype.findByUser = function (userName) {
+    }
+    findByUser(userName) {
         return this.repository.findByUser(userName);
-    };
-    return ReservationControllerImpl;
-}());
+    }
+}
 exports.ReservationControllerImpl = ReservationControllerImpl;

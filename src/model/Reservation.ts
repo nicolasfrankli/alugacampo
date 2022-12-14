@@ -1,4 +1,3 @@
-import { Court } from "./Court"
 import { SportName } from "../enums/SportName";
 
 export class Reservation {

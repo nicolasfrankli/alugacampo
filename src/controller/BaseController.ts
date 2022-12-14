@@ -6,9 +6,10 @@ export interface BaseController<T> {
 
     findById(id: string): T;
 
-    //update
+    updateById(id: string, parameters: Map<string, Object>): T;
 
     deleteById(id: string): void;
+
 }
 
 
