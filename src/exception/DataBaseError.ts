@@ -1,5 +1,6 @@
-export class EmptyReservationListError extends Error {
+export class DatabaseError extends Error {
     constructor(message: string) {
         super(message);
     }
 }
+

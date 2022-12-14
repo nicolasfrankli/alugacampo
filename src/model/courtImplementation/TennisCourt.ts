@@ -12,6 +12,5 @@ export class TennisCourt extends Court {
         this.netMaterial = netMaterial;
         this.hasOpenCeiling = hasOpenCeiling;
         this.numberOfBallsAvailable = numberOfBallsAvailable;
-
     }
 }

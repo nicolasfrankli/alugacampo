@@ -1,26 +1,27 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TennisCourtControllerImpl = void 0;
-var TennisCourtControllerImpl = /** @class */ (function () {
-    function TennisCourtControllerImpl(repository) {
+class TennisCourtControllerImpl {
+    constructor(repository) {
         this.courtRepository = repository;
     }
-    TennisCourtControllerImpl.prototype.save = function (tennisCourt) {
+    save(tennisCourt) {
         this.courtRepository.save(tennisCourt);
-    };
-    TennisCourtControllerImpl.prototype.findAll = function () {
+    }
+    findAll() {
         return this.courtRepository.findAll();
-    };
-    TennisCourtControllerImpl.prototype.findById = function (id) {
+    }
+    findById(id) {
         return this.courtRepository.findById(id);
-    };
-    //update
-    TennisCourtControllerImpl.prototype.deleteById = function (id) {
+    }
+    updateById(id, parameters) {
+        return this.courtRepository.updateById(id, parameters);
+    }
+    deleteById(id) {
         this.courtRepository.deleteById(id);
-    };
-    TennisCourtControllerImpl.prototype.showCoveredCourts = function () {
+    }
+    showCoveredCourts() {
         return this.courtRepository.showCoveredCourts();
-    };
-    return TennisCourtControllerImpl;
-}());
+    }
+}
 exports.TennisCourtControllerImpl = TennisCourtControllerImpl;
