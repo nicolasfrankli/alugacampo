@@ -25,11 +25,7 @@ requisito 6:
 -------------------------------------------------------------------------
 
 TODO:
-    - repositório de reservas
     - relacionamento 1 pra muitos no banco de dados
-    - métodos das interfaces de repositório das quadras
-    - métodos das interfaces de controller
-    - estrutura de interfaces e implementações para reserva
     - view e validações
 
 -------------------------------------------------------------------------

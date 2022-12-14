@@ -1,4 +1,6 @@
 import { TypedJsonDB, ContentBase } from "ts-json-db";
+import { EmptyTennisCourtError } from "../../exception/EmptyTennisCourtError";
+import { IdNotFoundError } from "../../exception/IdNotFoundError";
 import { TennisCourt } from "../../model/courtImplementation/TennisCourt";
 import { TennisCourtRepository } from "../TennisCourtRepository";
 
